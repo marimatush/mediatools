@@ -1,0 +1,15 @@
+[project]
+name = "wav-to-mp3"
+version = "0.1.0"
+description = "A simple CLI tool to convert WAV files to high-quality MP3 (320 kbps)"
+authors = [
+    { name = "Maria Matyushenko", email = "marimatush@gmail.com" }
+]
+requires-python = ">=3.8"
+dependencies = [
+    "pydub"
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
