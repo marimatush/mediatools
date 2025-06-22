@@ -12,3 +12,5 @@ env/
 
 # macOS
 .DS_Store
+
+*.egg-info/

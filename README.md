@@ -1,44 +1,56 @@
-# 🎵 WAV to MP3 Converter (320 kbps)
+# 🎛️ MediaTools
 
-This is a simple Python program that converts `.wav` audio files to high-quality `.mp3` files using **320 kbps bitrate**. It uses [`pydub`](https://github.com/jiaaro/pydub) and [`ffmpeg`](https://ffmpeg.org/), and the setup is managed using [`uv`](https://github.com/astral-sh/uv), a fast Python package manager.
+MediaTools is a simple and modular Python CLI app for converting media files.
+
+- 🎵 Convert `.wav` audio to high-quality `.mp3` (320 kbps)
+- 🖼️ Convert `.png` and `.jpeg` images to `.webp` (with quality control)
+
+Built with [`uv`](https://github.com/astral-sh/uv) for dependency management.
 
 ---
 
 ## 🚀 Features
 
-- Converts `.wav` files to `.mp3` format
-- Maintains high-quality output at 320 kbps
-- Simple command-line usage
-- Cross-platform (macOS, Windows, Linux)
+- Audio: WAV → MP3 (320 kbps)
+- Image: PNG/JPEG → WebP (default quality 80)
 
 ---
 
-## 📦 Setup Instructions (with `uv`)
+## 🛠️ Setup
 
-### 1. Install `uv`
+### 1. Install `uv` (if not already installed)
 
 ```bash
 curl -Ls https://astral.sh/uv/install.sh | sh
 ```
 
-### 2. 🐍 Create and activate a virtual environment
+### 2. Create and activate a virtual environment
 
 ```bash
-uv venv .venv
+uv venv .venv --python 3.12
 source .venv/bin/activate
 ```
 
-### 3. 📦 Install Python dependencies
+### 3. Install dependencies
 ```bash
-uv pip install -r <(uv pip compile pyproject.toml)
+uv sync
 ```
 
-### 5. Run the converter
+⚠️ Requires FFmpeg installed and in your system PATH for audio conversion.
+
+## ✨ Usage / Examples
+
+General usage
 ```bash
-python convert.py example.wav
+python main.py [audio|image] <args>
+```
 
+🔊 Convert Audio (WAV to MP3)
+```bash
+python main.py audio input.wav --output output.mp3 --bitrate 320k
+```
 
-# Command output
-✅ Conversion successful!
-🎵 MP3 saved at: example.mp3
+🖼️ Convert Image (PNG/JPEG to WebP)
+```bash
+python main.py image input.jpg --output output.webp --quality 90
 ```

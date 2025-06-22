@@ -1,15 +1,19 @@
 [project]
-name = "wav-to-mp3"
-version = "0.1.0"
-description = "A simple CLI tool to convert WAV files to high-quality MP3 (320 kbps)"
+name = "mediatools"
+version = "0.2.0"
+description = "A simple CLI tool to convert audio and image files"
 authors = [
     { name = "Maria Matyushenko", email = "marimatush@gmail.com" }
 ]
-requires-python = ">=3.8"
+requires-python = ">=3.12"
 dependencies = [
-    "pydub"
+    "pydub",
+    "pillow"
 ]
 
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
+
+[tool.flake8]
+max-line-length = 100
