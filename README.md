@@ -54,3 +54,9 @@ python main.py audio input.wav --output output.mp3 --bitrate 320k
 ```bash
 python main.py image input.jpg --output output.webp --quality 90
 ```
+
+📄 Merge Images into PDF
+```bash
+python main.py pdf /path/to/image/folder --output merged.pdf
+```
+💡 The PDF command scans the given folder for .jpg, .jpeg, or .png files, sorts them alphabetically, and merges them into a single multi-page PDF.
