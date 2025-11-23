@@ -4,6 +4,8 @@ MediaTools is a simple and modular Python CLI app for converting media files.
 
 - 🎵 Convert `.wav` audio to high-quality `.mp3` (320 kbps)
 - 🖼️ Convert `.png` and `.jpeg` images to `.webp` (with quality control)
+- 📄 Merge images into a single PDF
+- 📚 Merge multiple PDFs into one combined PDF
 
 Built with [`uv`](https://github.com/astral-sh/uv) for dependency management.
 
@@ -60,3 +62,8 @@ python main.py image input.jpg --output output.webp --quality 90
 python main.py pdf /path/to/image/folder --output merged.pdf
 ```
 💡 The PDF command scans the given folder for .jpg, .jpeg, or .png files, sorts them alphabetically, and merges them into a single multi-page PDF.
+
+📚 Merge Multiple PDFs into One
+```bash
+python main.py pdfmerge ./pdfs --output merged.pdf
+```

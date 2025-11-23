@@ -1,5 +1,6 @@
 from mediatools.audio import convert_wav_to_mp3
 from mediatools.image import convert_image_to_webp, merge_images_to_pdf
+from mediatools.pdf import merge_pdfs_in_directory
 import argparse
 
 
@@ -13,19 +14,28 @@ def main():
     audio_parser.add_argument("--output", help="Output MP3 file")
     audio_parser.add_argument("--bitrate", default="320k", help="MP3 bitrate")
 
-    # Image
+    # Image -> WebP
     image_parser = subparsers.add_parser("image", help="Convert PNG/JPEG to WebP")
     image_parser.add_argument("input", help="Input image file")
     image_parser.add_argument("--output", help="Output WebP file")
     image_parser.add_argument("--quality", type=int, default=80, help="WebP quality")
 
-    # PDF
+    # Images -> PDF
     pdf_parser = subparsers.add_parser(
         "pdf", help="Merge all images in a folder into a single PDF"
     )
     pdf_parser.add_argument("input", help="Input directory containing images")
     pdf_parser.add_argument(
         "--output", help="Output PDF file (default: merged_images.pdf)"
+    )
+
+    # PDF -> merged PDF
+    pdfmerge_parser = subparsers.add_parser(
+        "pdfmerge", help="Merge all PDF files in a folder into a single PDF"
+    )
+    pdfmerge_parser.add_argument("input", help="Input directory containing PDF files")
+    pdfmerge_parser.add_argument(
+        "--output", help="Output merged PDF file (default: merged.pdf)"
     )
 
     args = parser.parse_args()
@@ -36,6 +46,8 @@ def main():
         convert_image_to_webp(args.input, args.output, args.quality)
     elif args.command == "pdf":
         merge_images_to_pdf(args.input, args.output)
+    elif args.command == "pdfmerge":
+        merge_pdfs_in_directory(args.input, args.output)
     else:
         parser.print_help()
 
