@@ -1,6 +1,7 @@
 from mediatools.audio import convert_wav_to_mp3
 from mediatools.image import convert_image_to_webp, merge_images_to_pdf
 from mediatools.pdf import merge_pdfs_in_directory
+from mediatools.video import extract_audio_from_video
 import argparse
 
 
@@ -38,10 +39,22 @@ def main():
         "--output", help="Output merged PDF file (default: merged.pdf)"
     )
 
+    # Video -> Extract audio
+    video_parser = subparsers.add_parser(
+        "video", help="Extract audio from video file (MP4, AVI, MOV, etc.)"
+    )
+    video_parser.add_argument("input", help="Input video file")
+    video_parser.add_argument("--output", help="Output audio file")
+    video_parser.add_argument(
+        "--format", default="mp3", help="Audio format (mp3, wav, aac, etc.)"
+    )
+
     args = parser.parse_args()
 
     if args.command == "audio":
         convert_wav_to_mp3(args.input, args.output, args.bitrate)
+    elif args.command == "video":
+        extract_audio_from_video(args.input, args.output, args.format)
     elif args.command == "image":
         convert_image_to_webp(args.input, args.output, args.quality)
     elif args.command == "pdf":

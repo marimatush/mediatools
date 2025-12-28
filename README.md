@@ -3,6 +3,7 @@
 MediaTools is a simple and modular Python CLI app for converting media files.
 
 - 🎵 Convert `.wav` audio to high-quality `.mp3` (320 kbps)
+- 🎬 Extract audio from video files (MP4, AVI, MOV, etc.)
 - 🖼️ Convert `.png` and `.jpeg` images to `.webp` (with quality control)
 - 📄 Merge images into a single PDF
 - 📚 Merge multiple PDFs into one combined PDF
@@ -14,7 +15,9 @@ Built with [`uv`](https://github.com/astral-sh/uv) for dependency management.
 ## 🚀 Features
 
 - Audio: WAV → MP3 (320 kbps)
+- Video: Extract audio from video files (MP4, AVI, MOV, etc.)
 - Image: PNG/JPEG → WebP (default quality 80)
+- PDF: Merge images or PDFs into combined documents
 
 ---
 
@@ -44,13 +47,19 @@ uv sync
 
 General usage
 ```bash
-python main.py [audio|image] <args>
+python main.py [audio|video|image|pdf|pdfmerge] <args>
 ```
 
 🔊 Convert Audio (WAV to MP3)
 ```bash
 python main.py audio input.wav --output output.mp3 --bitrate 320k
 ```
+
+🎬 Extract Audio from Video
+```bash
+python main.py video input.mp4 --output audio.mp3 --format mp3
+```
+💡 Supports multiple video formats (MP4, AVI, MOV, etc.) and audio formats (mp3, wav, aac)
 
 🖼️ Convert Image (PNG/JPEG to WebP)
 ```bash
